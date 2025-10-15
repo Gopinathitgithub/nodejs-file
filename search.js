@@ -19,18 +19,16 @@ const tra= http.createServer((req,res)=>{
  }
 if(req. url==='/message'&& req.method==='POST'){
   let body=''
-req.on('data',chunk=>{   // ->  step 1 :  html input name message id of object this actual return by input value request ul post pass data chunk one of bufer
+req.on('data',chunk=>{ // -> step 1 :  html input name message id of object this actual return by input value request ul post pass data chunk one of bufer
                               // buffer indidual to space selcet or changing human understand   
   body+=chunk.toString();
 })
 req.on('end',()=>{  // all data client to has been received and processed
   const message = body.split('=') // body in string and also rewrite split using [1] this  
 
-  fs.writeFile('./content/',message[1],'utf-8',(err)=>{
+  fs.writeFile('./content/bigsteam.txt',message[1],'utf-8',(err)=>{
     if (err){
-      res.statusCode=503
       console.log(err)
-      return res.end('this error not your fault')
     }
     else{
       console.log('file written successfully')
@@ -38,9 +36,10 @@ req.on('end',()=>{  // all data client to has been received and processed
     res.setHeader('Location','/')
     res.statusCode=302
     return res.end() // fully end
-  }) 
-   // 
- 
+  }) // 
+   return 'mml'
+  // 
+
 
 })
 

@@ -56,12 +56,12 @@ const startfile =(path)=>{
     }else{
         reject(data)
     }
-    }
+    }///
 )
 
 })}
 
-const trang = async()=>{ //This defines an async function named trang. async functions allow the use of await to 
+const table = async()=>{ //This defines an async function named trang. async functions allow the use of await to 
                             //  pause execution until a Promise settles (either resolves or rejects).
    try{ 
     const first = await startfile('./content/result-sync.txt') // actually passing excution will do is pause then excution in wait on return (resolve,reject)
@@ -71,14 +71,17 @@ const trang = async()=>{ //This defines an async function named trang. async fun
     console.log(err)
    }
 }
-trang()
+table()
 
 //startfile('./content/result-sync.txt').then((result)=>{console.log(result)}).catch((err)=>console.log(err))
 
-const {readFile,writeFile}= require('fs')//(File System) module. readFile is used for asynchronously reading file contents.
+
+
+
+const {readFile,writeFile}= require('fs').promises//(File System) module. readFile is used for asynchronously reading file contents.
 const util = require('util')
-const readpromise =util.promisify(readFile)
-const writepromise =util.promisify(writeFile)//fs.writeFile(path, data, options, callback)
+//const readpromise =util.promisify(readFile)
+//const writepromise =util.promisify(writeFile)//fs.writeFile(path, data, options, callback) 
 //path → where to write the file
 
 //data → what to write into the file
@@ -86,15 +89,18 @@ const writepromise =util.promisify(writeFile)//fs.writeFile(path, data, options,
 //options → encoding (utf8 etc.), mode, flag (optional)
 
 //callback → function (error) (when not promisified)
+function value(Name,id){
+            
+   console.log(`the are verfiy authozication ${Name}${id}`)
+}
 
 
-
-const value= async()=>{ //This defines an async function named trang. async functions allow the use of await to 
+const trang = async()=>{ //This defines an async function named trang. async functions allow the use of await to 
                             //  pause execution until a Promise settles (either resolves or rejects).
    try{ 
-    const first = await readpromise('./content/result-sync.txt','utf8') // actually passing excution will do is pause then excution in wait on return (resolve,reject)
-    const second = await readpromise ('./content/subrator/subject.txt','utf8') 
-    await writepromise('./content/subrator/retra_sync.txt',` This is Assome:${first}${second}`,'utf8')
+    const first = await readFile('./content/result-sync.txt','utf8') // actually passing excution will do is pause then excution in wait on return (resolve,reject)
+    const second = await readFile ('./content/subrator/subject.txt','utf8') 
+    await writeFile('./content/subrator/retra_sync.txt',` This is Assome:${first}${second}`,'utf8')
    console.log(first,second)
   
    }catch(err){
@@ -103,12 +109,4 @@ const value= async()=>{ //This defines an async function named trang. async func
 }
 trang()
 
-
-
-
 //startfile('./content/result-sync.txt').then((result)=>{console.log(result)}).catch((err)=>console.log(err))
-
-
-
-
-

@@ -3,7 +3,7 @@ const http = require('http')
 const server = http.createServer((req,res)=>{ // http request sent to server from localserver  request mean throught 
 // http format sent the particular follow
     if(req.url==='/'){ //  http format of the follow order 
-        res.end('page fint') // acessing url is the respose value end of in the page
+        res.end('page fint') // acessing url is the respose value end of in the page  res
         return
     }
     if(req.url==='/about'){
