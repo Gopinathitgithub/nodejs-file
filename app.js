@@ -2,7 +2,7 @@
 
   const fs=require('fs')
   const http = require('http')
-
+ 
 const tra= http.createServer((req,res)=>{
  if(req.url==='/'&& req.method==='GET'){
   res.setHeader('Content-Type','text/html')
